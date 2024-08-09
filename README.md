@@ -41,7 +41,7 @@ This application, developed using C# and .NET Framework 4.8, is designed to enha
 
 ## License
 
-### Please refer to the [LICENSE](https://github.com/Mohamed-SayedAlAhl/EnvironmentPathManager/LICENSE) file for detailed licensing terms.
+### Please refer to the [LICENSE](https://github.com/Mohamed-SayedAlAhl/EnvironmentPathManager/blob/main/LICENSE) file for detailed licensing terms.
 
 ## Contact
 
