@@ -1,5 +1,3 @@
-
-
 # Environment Path Manager
 
 ## Overview
@@ -43,13 +41,7 @@ This application, developed using C# and .NET Framework 4.8, is designed to enha
 
 ## License
 
-```
-Copyright (c) 2024 Mohamed Sayed Al-Ahl. All Rights Reserved. 
-
-This software is provided "as is" and without warranty of any kind. The author is not responsible for any misuse of this software.
-
-You are granted a non-exclusive, non-transferable license to use the software for personal or commercial purposes. Modification of the software is not permitted. Any use, modification, or distribution of the software requires prior written consent from the author.
-```
+### Please refer to the [LICENSE](https://github.com/Mohamed-SayedAlAhl/EnvironmentPathManager/LICENSE) file for detailed licensing terms.
 
 ## Contact
 
