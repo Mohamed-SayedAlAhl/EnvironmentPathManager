@@ -35,18 +35,15 @@ This application, developed using C# and .NET Framework 4.8, is designed to enha
 2. Run the executable to start the application.
 3. First, It will prompt you to backup your path variable and it will pop-up a dialog like this, Just choose where you want to save the backup
    ![](C:\Users\Eng.Mohamed%20Ahmed\Desktop\New%20folder\030.jpg)
-   
-   
+
 4. Then , it will open the app which will look like this 
    ![](C:\Users\Eng.Mohamed%20Ahmed\Desktop\New%20folder\027.jpg)
 5. If you didn't follow the backup prompt when you started the app , I recommend that you back up your original path when the app opens. 
-   
-   
+
 6. when backing up your data, you can easily import them whenever you like using import button and it will pop-up  a screen like this asking for path to the backup txt file
    
    ![](C:\Users\Eng.Mohamed%20Ahmed\Desktop\New%20folder\028.jpg)
-   
-   
+
 7. when Editing and you want to take a rest then continue you can save your current snapshot under editing for later editing using export viewed snapshot button and it will ask you for location where you want to save this snapshot. By Default it will make it easy for you and it will enter name of the export with the date of the day to make it easy for accessing later on
    
    ![](C:\Users\Eng.Mohamed%20Ahmed\Desktop\New%20folder\029.jpg)
