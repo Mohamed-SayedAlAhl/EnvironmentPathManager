@@ -47,4 +47,4 @@ This application, developed using C# and .NET Framework 4.8, is designed to enha
 
 For any questions or permission requests, please contact:
 
-- [Mohamed Sayed Al-Ahl](https://www.linkedin.com/in/mohamed-sayedalahl/).
+- [Mohamed Sayed Al-Ahl](https://www.linkedin.com/in/mohamed-sayedalahl/)
