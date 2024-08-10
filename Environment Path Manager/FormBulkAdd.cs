@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace tst
+namespace Manager
 {
     public partial class FormBulkAdd : Form
     {

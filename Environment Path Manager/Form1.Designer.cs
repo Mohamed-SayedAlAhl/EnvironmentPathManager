@@ -1,5 +1,5 @@
 ﻿
-namespace tst
+namespace Manager
 {
     partial class Form1
     {
