@@ -1,5 +1,5 @@
 ﻿
-namespace tst
+namespace Manager
 {
     partial class Form1
     {
@@ -41,7 +41,7 @@ namespace tst
             this.btnSave = new System.Windows.Forms.Button();
             this.BtnCancel = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.listBox1 = new tst.EditListBox();
+            this.listBox1 = new Manager.EditListBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.btnSearch = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();

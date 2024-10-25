@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 using EnvironmentPathManagerBusinessLayer;
 
-namespace tst
+namespace Manager
 {
 
 
