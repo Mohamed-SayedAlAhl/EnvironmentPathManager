@@ -1,5 +1,5 @@
 ﻿
-namespace Manager
+namespace tst
 {
     partial class Form1
     {
@@ -8,6 +8,7 @@ namespace Manager
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
+        
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -36,12 +37,11 @@ namespace Manager
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnMoveUp = new System.Windows.Forms.Button();
             this.btnMoveDown = new System.Windows.Forms.Button();
-            this.btnBulkAdd = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.BtnCancel = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listBox1 = new tst.EditListBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.btnSearch = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
@@ -92,19 +92,9 @@ namespace Manager
             this.btnMoveDown.UseVisualStyleBackColor = true;
             this.btnMoveDown.Click += new System.EventHandler(this.btnMoveDown_Click);
             // 
-            // btnBulkAdd
-            // 
-            this.btnBulkAdd.Location = new System.Drawing.Point(611, 75);
-            this.btnBulkAdd.Name = "btnBulkAdd";
-            this.btnBulkAdd.Size = new System.Drawing.Size(91, 23);
-            this.btnBulkAdd.TabIndex = 5;
-            this.btnBulkAdd.Text = "Bulk Add";
-            this.btnBulkAdd.UseVisualStyleBackColor = true;
-            this.btnBulkAdd.Click += new System.EventHandler(this.btnBulkAdd_Click);
-            // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(502, 272);
+            this.button3.Location = new System.Drawing.Point(502, 263);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(141, 23);
             this.button3.TabIndex = 7;
@@ -136,26 +126,28 @@ namespace Manager
             // 
             this.panel1.AutoSize = true;
             this.panel1.Controls.Add(this.listBox1);
-            this.panel1.Location = new System.Drawing.Point(1, 12);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(485, 355);
+            this.panel1.Size = new System.Drawing.Size(485, 396);
             this.panel1.TabIndex = 10;
             // 
-            // listBox1
+            // listBox2
             // 
+            this.listBox1.AllowDelete = true;
+            this.listBox1.CommitOnEnter = true;
+            this.listBox1.CommitOnLeave = true;
+            this.listBox1.ConfirmDelete = true;
+            this.listBox1.ConfirmDeleteText = "Are you sure you want to delete the selected items?";
             this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.listBox1.FormattingEnabled = true;
             this.listBox1.HorizontalScrollbar = true;
             this.listBox1.IntegralHeight = false;
             this.listBox1.Location = new System.Drawing.Point(0, 0);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(485, 355);
+            this.listBox1.Name = "listBox2";
+            this.listBox1.Size = new System.Drawing.Size(485, 396);
             this.listBox1.TabIndex = 0;
-            this.listBox1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox1_DrawItem);
-            this.listBox1.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.listBox1_MeasureItem);
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
-            this.listBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseDown);
             // 
             // btnSearch
             // 
@@ -163,13 +155,13 @@ namespace Manager
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(91, 23);
             this.btnSearch.TabIndex = 11;
-            this.btnSearch.Text = "Search Path";
+            this.btnSearch.Text = "Browse...";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnImport
             // 
-            this.btnImport.Location = new System.Drawing.Point(611, 209);
+            this.btnImport.Location = new System.Drawing.Point(611, 75);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(91, 23);
             this.btnImport.TabIndex = 12;
@@ -183,7 +175,7 @@ namespace Manager
             // 
             // btnBackShowingPath
             // 
-            this.btnBackShowingPath.Location = new System.Drawing.Point(674, 272);
+            this.btnBackShowingPath.Location = new System.Drawing.Point(674, 263);
             this.btnBackShowingPath.Name = "btnBackShowingPath";
             this.btnBackShowingPath.Size = new System.Drawing.Size(139, 23);
             this.btnBackShowingPath.TabIndex = 13;
@@ -203,7 +195,6 @@ namespace Manager
             this.Controls.Add(this.BtnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.btnBulkAdd);
             this.Controls.Add(this.btnMoveDown);
             this.Controls.Add(this.btnMoveUp);
             this.Controls.Add(this.btnDelete);
@@ -221,8 +212,6 @@ namespace Manager
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnBulkAdd;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button BtnCancel;
@@ -234,7 +223,8 @@ namespace Manager
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button btnBackShowingPath;
         private System.Windows.Forms.SaveFileDialog saveFileDialog2;
-        private System.Windows.Forms.ListBox listBox1;
+
+        //private System.Windows.Forms.ListBox listBox1;
     }
 }
 
