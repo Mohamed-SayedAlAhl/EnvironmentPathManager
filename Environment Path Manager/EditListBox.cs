@@ -223,16 +223,28 @@ namespace Manager
 
         protected override void WndProc(ref Message m)
         {
+            
+
             base.WndProc(ref m);
 
             // When the user starts scrolling, commit the edit
-            if (m.Msg == WM_VSCROLL || m.Msg == WM_MOUSEWHEEL)
+
+            if ((m.Msg == WM_VSCROLL || m.Msg == WM_MOUSEWHEEL)&& this.SelectedItems.Count == 1)
             {
-                if (this.CommitOnLeave)
-                    this.CommitTextBox();
-                else
-                    this.RollBackTextBox();
+                
+                    if (this.CommitOnLeave)
+                        this.CommitTextBox();
+                    else
+                        this.RollBackTextBox();
+
+                
+              
             }
+            else
+            {
+                return;
+            }
+           
         }
 
         #endregion
@@ -289,6 +301,8 @@ namespace Manager
         public void MoveItem(int direction)
         {
 
+
+
             // Check if there are any selected items
             if (this.SelectedItems.Count == 0)
                 return;
@@ -313,30 +327,36 @@ namespace Manager
                     return; // Can't move up if the first selected item is at the top
             }
 
-            // Create a list of items to be moved down/up
-            List<object> itemsToMove = new List<object>(selectedItems);
+           
+                // Create a list of items to be moved down/up
+                List<object> itemsToMove = new List<object>(selectedItems);
 
-            // Remove the selected items from their current positions
-            foreach (var item in itemsToMove)
-            {
-                this.Items.Remove(item);
-            }
+                
 
-            // New position for the first selected item
-            int newPosition = direction == 1 ? firstSelectedIndex + 1 : firstSelectedIndex - 1;
+                // Remove the selected items from their current positions
+                foreach (var item in itemsToMove)
+                {
+                    this.Items.Remove(item);
+                }
 
-            // Insert the items back at their new positions
-            for (int i = 0; i < itemsToMove.Count; i++)
-            {
-                this.Items.Insert(newPosition + i, itemsToMove[i]);
-            }
+                // New position for the first selected item
+                int newPosition = direction == 1 ? firstSelectedIndex + 1 : firstSelectedIndex - 1;
 
-            // Reselect the moved items
-            foreach (var item in itemsToMove)
-            {
-                int newIndex = this.Items.IndexOf(item);
-                this.SetSelected(newIndex, true); // Reselect moved items
-            }
+                // Insert the items back at their new positions
+                for (int i = 0; i < itemsToMove.Count; i++)
+                {
+                    this.Items.Insert(newPosition + i, itemsToMove[i]);
+                }
+
+                // Reselect the moved items
+                foreach (var item in itemsToMove)
+                {
+                    int newIndex = this.Items.IndexOf(item);
+                    this.SetSelected(newIndex, true); // Reselect moved items
+                }
+           
+           
+           
         }
         public void AddNewItem(string newItemText,bool editMode=false)
         {
