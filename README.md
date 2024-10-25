@@ -9,7 +9,7 @@ This application, developed using C# and .NET Framework 4.8, is designed to enha
 - **Enhanced Environment Variable Management:**
   
   - **Dynamic Path Handling:** Efficiently manage the Path environment variable.
-  - **User-Friendly Interface:** Modern Windows Forms interface for easy use.
+  - **User-Friendly Interface:** Modern Windows Forms interface for easy use with enhanced capabilities.
   - **Overcome Windows Dialog Limitations:** Extended functionality beyond the 2047-character limit.
 
 - **Safe and Secure:**
@@ -25,14 +25,17 @@ This application, developed using C# and .NET Framework 4.8, is designed to enha
 
 - **Unique Features:**
   
-  - **Bulk Addition:** Add multiple paths at once.
+  - **Bulk Addition:** Add multiple paths at once with single click with browse.
+  - **Multi Selection:** The app allow Multi selection inside list box with allowing you to delete multiple paths or moving multiple paths around.
   - **Backup Features:** Create backups of the Path variable.
   - **Export and Import:** Export snapshots and import paths from text files.
 
 ## Installation
 
 1. Download the latest release from the [Releases](https://github.com/Mohamed-SayedAlAhl/EnvironmentPathManager/releases) page.
+
 2. Run the executable to start the application.
+
 3. First, It will prompt you to backup your path variable and it will pop-up a dialog like this, Just choose where you want to save the backup
    ![030](https://github.com/user-attachments/assets/fe95e0ca-6c13-49d9-b51e-242f8119d66a)
 
