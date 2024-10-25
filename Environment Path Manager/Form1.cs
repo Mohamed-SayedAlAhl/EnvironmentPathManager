@@ -297,17 +297,12 @@ namespace Manager
 
         private void btnImport_Click(object sender, EventArgs e)
         {
-            //string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            //openFileDialog1.InitialDirectory = $@"{desktopPath}";
 
             string ThisPcPath = Environment.GetFolderPath(Environment.SpecialFolder.MyComputer);
 
-
-
-
             openFileDialog1.InitialDirectory = $@"{ThisPcPath}";
 
-            openFileDialog1.Title = "Import Backup text File : ";
+            openFileDialog1.Title = "Import Backup from text File : ";
             openFileDialog1.DefaultExt = "txt";
 
             openFileDialog1.Filter = "text (*.txt)|*.txt";
@@ -318,8 +313,9 @@ namespace Manager
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
 
-
-
+                // Clear ListBox First Before Recovering
+                listBox1.Items.Clear();
+                // Recovering Backup
                 PopulateListFromString(File.ReadAllText(openFileDialog1.FileName));
 
             }
