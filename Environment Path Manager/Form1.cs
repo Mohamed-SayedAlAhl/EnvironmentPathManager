@@ -150,7 +150,8 @@ namespace Manager
             saveFileDialog1.Filter = "text (*.txt)|*.txt";
 
             saveFileDialog1.FilterIndex = 0;
-            string todayDate = DateTime.Now.ToString("yyyy-MM-dd");
+           
+            string todayDate = DateTime.Now.ToString("yyyy-MM-dd - hh_mm tt");
 
 
             saveFileDialog1.FileName = $"Original Path Backup - {todayDate}";
@@ -300,8 +301,8 @@ namespace Manager
                           
             saveFileDialog1.FilterIndex = 0;
 
-            string todayDate = DateTime.Now.ToString("yyyy-MM-dd");
-
+           
+            string todayDate = DateTime.Now.ToString("yyyy-MM-dd - hh_mm tt");
             saveFileDialog1.FileName = $" Viewed paths Snapshot - {todayDate}";
 
 
