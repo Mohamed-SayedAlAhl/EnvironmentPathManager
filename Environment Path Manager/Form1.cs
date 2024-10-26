@@ -39,7 +39,7 @@ namespace Manager
             ToolTip toolTip = new ToolTip();
 
             // Set up the tooltip delay properties if needed
-            toolTip.AutoPopDelay = 4000;   // Time the tooltip remains visible (ms)
+            toolTip.AutoPopDelay = 4500;   // Time the tooltip remains visible (ms)
             toolTip.InitialDelay = 500;    // Delay before the tooltip appears (ms)
             toolTip.ReshowDelay = 200;     // Delay before it reappears after fading
 
