@@ -37,25 +37,25 @@ namespace Manager
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnMoveUp = new System.Windows.Forms.Button();
             this.btnMoveDown = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnbackup = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.BtnCancel = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.listBox1 = new Manager.EditListBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnBrowse = new System.Windows.Forms.Button();
             this.btnImport = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.btnBackShowingPath = new System.Windows.Forms.Button();
-            this.btn_Recovery = new System.Windows.Forms.Button();
+            this.btnSnapshot = new System.Windows.Forms.Button();
+            this.btnRestore = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(722, 75);
+            this.btnNew.Location = new System.Drawing.Point(735, 71);
             this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(91, 23);
+            this.btnNew.Size = new System.Drawing.Size(101, 23);
             this.btnNew.TabIndex = 1;
             this.btnNew.Text = "New";
             this.btnNew.UseVisualStyleBackColor = true;
@@ -63,9 +63,9 @@ namespace Manager
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(611, 125);
+            this.btnDelete.Location = new System.Drawing.Point(614, 121);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(91, 23);
+            this.btnDelete.Size = new System.Drawing.Size(101, 23);
             this.btnDelete.TabIndex = 2;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -73,9 +73,9 @@ namespace Manager
             // 
             // btnMoveUp
             // 
-            this.btnMoveUp.Location = new System.Drawing.Point(502, 75);
+            this.btnMoveUp.Location = new System.Drawing.Point(494, 71);
             this.btnMoveUp.Name = "btnMoveUp";
-            this.btnMoveUp.Size = new System.Drawing.Size(91, 23);
+            this.btnMoveUp.Size = new System.Drawing.Size(101, 23);
             this.btnMoveUp.TabIndex = 3;
             this.btnMoveUp.Text = "Move Up";
             this.btnMoveUp.UseVisualStyleBackColor = true;
@@ -83,23 +83,23 @@ namespace Manager
             // 
             // btnMoveDown
             // 
-            this.btnMoveDown.Location = new System.Drawing.Point(502, 125);
+            this.btnMoveDown.Location = new System.Drawing.Point(494, 121);
             this.btnMoveDown.Name = "btnMoveDown";
-            this.btnMoveDown.Size = new System.Drawing.Size(91, 23);
+            this.btnMoveDown.Size = new System.Drawing.Size(101, 23);
             this.btnMoveDown.TabIndex = 4;
             this.btnMoveDown.Text = "Move Down";
             this.btnMoveDown.UseVisualStyleBackColor = true;
             this.btnMoveDown.Click += new System.EventHandler(this.btnMoveDown_Click);
             // 
-            // button3
+            // btnbackup
             // 
-            this.button3.Location = new System.Drawing.Point(502, 273);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(141, 23);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "Back Up Original Path";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnbackup.Location = new System.Drawing.Point(494, 228);
+            this.btnbackup.Name = "btnbackup";
+            this.btnbackup.Size = new System.Drawing.Size(101, 23);
+            this.btnbackup.TabIndex = 7;
+            this.btnbackup.Text = "Backup Paths";
+            this.btnbackup.UseVisualStyleBackColor = true;
+            this.btnbackup.Click += new System.EventHandler(this.btnbackup_Click);
             // 
             // btnSave
             // 
@@ -146,23 +146,22 @@ namespace Manager
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(485, 396);
             this.listBox1.TabIndex = 0;
-
             // 
-            // btnSearch
+            // btnBrowse
             // 
-            this.btnSearch.Location = new System.Drawing.Point(722, 125);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(91, 23);
-            this.btnSearch.TabIndex = 11;
-            this.btnSearch.Text = "Browse...";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            this.btnBrowse.Location = new System.Drawing.Point(735, 121);
+            this.btnBrowse.Name = "btnBrowse";
+            this.btnBrowse.Size = new System.Drawing.Size(101, 23);
+            this.btnBrowse.TabIndex = 11;
+            this.btnBrowse.Text = "Browse...";
+            this.btnBrowse.UseVisualStyleBackColor = true;
+            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
             // 
             // btnImport
             // 
-            this.btnImport.Location = new System.Drawing.Point(611, 75);
+            this.btnImport.Location = new System.Drawing.Point(614, 71);
             this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(91, 23);
+            this.btnImport.Size = new System.Drawing.Size(101, 23);
             this.btnImport.TabIndex = 12;
             this.btnImport.Text = "Import";
             this.btnImport.UseVisualStyleBackColor = true;
@@ -172,44 +171,44 @@ namespace Manager
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // btnBackShowingPath
+            // btnSnapshot
             // 
-            this.btnBackShowingPath.Location = new System.Drawing.Point(674, 273);
-            this.btnBackShowingPath.Name = "btnBackShowingPath";
-            this.btnBackShowingPath.Size = new System.Drawing.Size(139, 23);
-            this.btnBackShowingPath.TabIndex = 13;
-            this.btnBackShowingPath.Text = "Export Viewed Snapshot";
-            this.btnBackShowingPath.UseVisualStyleBackColor = true;
-            this.btnBackShowingPath.Click += new System.EventHandler(this.btnBackShowingPath_Click);
+            this.btnSnapshot.Location = new System.Drawing.Point(614, 228);
+            this.btnSnapshot.Name = "btnSnapshot";
+            this.btnSnapshot.Size = new System.Drawing.Size(101, 23);
+            this.btnSnapshot.TabIndex = 13;
+            this.btnSnapshot.Text = "Export Snapshot";
+            this.btnSnapshot.UseVisualStyleBackColor = true;
+            this.btnSnapshot.Click += new System.EventHandler(this.btnSnapshot_Click);
             // 
-            // btn_Recovery
+            // btnRestore
             // 
-            this.btn_Recovery.Location = new System.Drawing.Point(585, 198);
-            this.btn_Recovery.Name = "btn_Recovery";
-            this.btn_Recovery.Size = new System.Drawing.Size(139, 23);
-            this.btn_Recovery.TabIndex = 14;
-            this.btn_Recovery.Text = "Recover from Backup";
-            this.btn_Recovery.UseVisualStyleBackColor = true;
-            this.btn_Recovery.Click += new System.EventHandler(this.btn_Recovery_Click);
+            this.btnRestore.Location = new System.Drawing.Point(735, 228);
+            this.btnRestore.Name = "btnRestore";
+            this.btnRestore.Size = new System.Drawing.Size(101, 23);
+            this.btnRestore.TabIndex = 14;
+            this.btnRestore.Text = "Restore Backup";
+            this.btnRestore.UseVisualStyleBackColor = true;
+            this.btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(833, 436);
-            this.Controls.Add(this.btn_Recovery);
-            this.Controls.Add(this.btnBackShowingPath);
+            this.ClientSize = new System.Drawing.Size(845, 436);
+            this.Controls.Add(this.btnRestore);
+            this.Controls.Add(this.btnSnapshot);
             this.Controls.Add(this.btnImport);
-            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.btnBrowse);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.BtnCancel);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnbackup);
             this.Controls.Add(this.btnMoveDown);
             this.Controls.Add(this.btnMoveUp);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnNew);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
@@ -222,16 +221,16 @@ namespace Manager
         }
 
         #endregion
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnbackup;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button BtnCancel;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnBrowse;
         private System.Windows.Forms.Button btnImport;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.Button btnBackShowingPath;
-        private System.Windows.Forms.Button btn_Recovery;
+        private System.Windows.Forms.Button btnSnapshot;
+        private System.Windows.Forms.Button btnRestore;
 
         //private System.Windows.Forms.ListBox listBox1;
     }

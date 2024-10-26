@@ -36,8 +36,24 @@ namespace Manager
             listBox1.PopulateListFromString(env.GetCurrentPath());
             listBox1.SelectionMode = SelectionMode.MultiExtended;
 
+            ToolTip toolTip = new ToolTip();
+
+            // Set up the tooltip delay properties if needed
+            toolTip.AutoPopDelay = 4000;   // Time the tooltip remains visible (ms)
+            toolTip.InitialDelay = 500;    // Delay before the tooltip appears (ms)
+            toolTip.ReshowDelay = 200;     // Delay before it reappears after fading
+
+            // Optional: Show tooltip instantly when hovering
+            toolTip.ShowAlways = true;
+
+            // Set the tooltip text for each button
+            toolTip.SetToolTip(btnImport, "Import paths from a semicolon-separated file.");
+            toolTip.SetToolTip(btnSnapshot, "Export displayed paths for easy editing.");
+            toolTip.SetToolTip(btnbackup, "Backup current paths stored in the system environment.");
+            toolTip.SetToolTip(btnRestore, "Restore paths from backup, replacing displayed paths.");
+
         }
-        
+
 
 
         private static string superEnvManagerDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), ".SuperEnvManager");
@@ -144,7 +160,7 @@ namespace Manager
             saveFileDialog1.InitialDirectory = $@"{ThisPcPath}";
 
 
-            saveFileDialog1.Title = "Save File As: ";
+            saveFileDialog1.Title = "Save File As ";
             saveFileDialog1.DefaultExt = "txt";
 
             saveFileDialog1.Filter = "text (*.txt)|*.txt";
@@ -154,7 +170,7 @@ namespace Manager
             string todayDate = DateTime.Now.ToString("yyyy-MM-dd - hh_mm tt");
 
 
-            saveFileDialog1.FileName = $"Original Path Backup - {todayDate}";
+            saveFileDialog1.FileName = $"Paths Backup - {todayDate}";
 
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -164,7 +180,7 @@ namespace Manager
                 {
                     if (WithMessage)
                     {
-                        CustomMessageBox.Show($"Original Paths Backed Up Successfully ", "Sucess", MessageBoxIcon.Information, true, "OK");
+                        CustomMessageBox.Show($"Backup of paths completed successfully.", "Success", MessageBoxIcon.Information, true, "OK");
 
                     }
                 }
@@ -172,7 +188,7 @@ namespace Manager
                 {
                     if (WithMessage)
                     {
-                        CustomMessageBox.Show("Original Paths Back Up Failed ", "Failed", MessageBoxIcon.Error, true, "OK");
+                        CustomMessageBox.Show("Backup of paths failed ", "Failure", MessageBoxIcon.Error, true, "OK");
 
                     }
                 }
@@ -184,7 +200,7 @@ namespace Manager
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnbackup_Click(object sender, EventArgs e)
         {
             BackupOriginal();
         }
@@ -202,7 +218,7 @@ namespace Manager
 
 
 
-        private void btnSearch_Click(object sender, EventArgs e)
+        private void btnBrowse_Click(object sender, EventArgs e)
         {
 
             VistaFolderBrowserDialog dialog = new VistaFolderBrowserDialog();
@@ -225,14 +241,14 @@ namespace Manager
 
         }
 
-        private void GetDataForImport_Recovery(bool IsRecovery=false)
+        private void GetDataForImport_Restore(bool IsRestore=false)
         {
 
             string ThisPcPath = Environment.GetFolderPath(Environment.SpecialFolder.MyComputer);
 
             openFileDialog1.InitialDirectory = $@"{ThisPcPath}";
 
-            openFileDialog1.Title = IsRecovery ? "Recover using Backup text File : " : "Import Paths from Semicolon seperated text File : ";
+            openFileDialog1.Title = IsRestore ? "Restore backup from a text file " : "Import paths from a semicolon-separated file ";
             openFileDialog1.DefaultExt = "txt";
 
             openFileDialog1.Filter = "text (*.txt)|*.txt";
@@ -243,7 +259,7 @@ namespace Manager
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
 
-                if(IsRecovery)
+                if(IsRestore)
                 {
                     // Clear ListBox First Before Recovering
                     listBox1.Items.Clear();
@@ -259,11 +275,11 @@ namespace Manager
         private void btnImport_Click(object sender, EventArgs e)
         {
 
-            GetDataForImport_Recovery(false);
+            GetDataForImport_Restore(false);
 
         }
 
-        private bool BackUpShowingPath(string backupFilePath, string PathsVariable)
+        private bool ExportDisplayedPaths(string backupFilePath, string PathsVariable)
         {
             try
             {
@@ -287,7 +303,7 @@ namespace Manager
                 return false;
             }
         }
-        private void btnBackShowingPath_Click(object sender, EventArgs e)
+        private void btnSnapshot_Click(object sender, EventArgs e)
         {
 
 
@@ -303,27 +319,27 @@ namespace Manager
 
            
             string todayDate = DateTime.Now.ToString("yyyy-MM-dd - hh_mm tt");
-            saveFileDialog1.FileName = $" Viewed paths Snapshot - {todayDate}";
+            saveFileDialog1.FileName = $"Displayed Paths Snapshot - {todayDate}";
 
 
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
 
 
-                if (BackUpShowingPath(saveFileDialog1.FileName, listBox1.GetListBoxItemsAsString()))
-                    CustomMessageBox.Show($"Export to Viewed Snapshot is Saved Successfully ", "Sucess", MessageBoxIcon.Information, true, "OK");
+                if (ExportDisplayedPaths(saveFileDialog1.FileName, listBox1.GetListBoxItemsAsString()))
+                    CustomMessageBox.Show($"Export to displayed snapshot completed successfully ", "Success", MessageBoxIcon.Information, true, "OK");
                 else
-                    CustomMessageBox.Show("Exportion to Viewed Snapshot  Failed  ", "Failure", MessageBoxIcon.Error, true, "OK");
+                    CustomMessageBox.Show("Export to displayed snapshot failed  ", "Failure", MessageBoxIcon.Error, true, "OK");
 
             }
         }
 
         
 
-        private void btn_Recovery_Click(object sender, EventArgs e)
+        private void btnRestore_Click(object sender, EventArgs e)
         {
 
-            GetDataForImport_Recovery(true);
+            GetDataForImport_Restore(true);
         }
     }
 
