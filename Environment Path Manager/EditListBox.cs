@@ -277,8 +277,13 @@ namespace Manager
         /// <summary>
         /// Deletes all selected items, after possibly showing a confirmation MessageBox.
         /// </summary>
+        /// 
+
+     
+
         public void DeleteSelectedItems()
         {
+
 
             // Display confirmation MessageBox if required
             bool canDelete = true;
@@ -289,13 +294,19 @@ namespace Manager
 
             if (canDelete && this.SelectedItems.Count > 0)
             {
-                // Delete all selected items in reverse order
-                for (int i = this.SelectedItems.Count - 1; i >= 0; i--)
-                {
-                    this.Items.Remove(this.SelectedItems[i]);
+                
 
+                while (this.SelectedItems.Count > 0)
+                {
+
+                    this.Items.RemoveAt(this.SelectedIndex);
                 }
+
             }
+
+            this.Height -= 20; // Adjusts height
+            
+
         }
 
         public void MoveItem(int direction)
@@ -379,13 +390,77 @@ namespace Manager
                 textBox.SelectionStart = 0; // Set cursor at the beginning
                 textBox.SelectionLength = textBox.TextLength; // Select the whole text
                 textBox.Focus(); // Focus on the TextBox
+
+                
+                this.SelectedIndex = this.Items.Count - 1; // Select the newly added item 
             }
 
 
-            this.SelectedIndex = this.Items.Count - 1; // Select the newly added item 
+            
 
             this.Refresh();
 
+        }
+
+        public void PopulateListFromArray(string[] items)
+        {
+
+            if (items.Length > 0)
+            {
+                // Remove the last empty item if it exists
+                if (this.Items.Count > 0 && string.IsNullOrEmpty(this.Items[this.Items.Count - 1].ToString()))
+                {
+                    this.Items.RemoveAt(this.Items.Count - 1);
+                }
+
+                // Add new items
+                this.Items.AddRange(items);
+
+                this.ClearSelected();
+                // Select the first newly added item
+                this.SelectedIndex = this.Items.Count - items.Length;
+
+                this.Refresh();
+            }
+        }
+
+        public void PopulateListFromString(string input)
+        {
+            string[] items = input.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries)
+                                  .Select(item => item.Trim())
+                                  .Where(item => !string.IsNullOrWhiteSpace(item))
+                                  .ToArray();
+
+
+            PopulateListFromArray(items);
+        }
+
+        public string GetListBoxItemsAsString()
+        {
+            // Initialize a StringBuilder to efficiently build the string
+            StringBuilder sb = new StringBuilder();
+
+            // Iterate through all items in the ListBox
+            foreach (var item in this.Items)
+            {
+                if (!string.IsNullOrEmpty(item.ToString()) && !string.IsNullOrWhiteSpace(item.ToString()))
+                {
+                    // Append each item to the StringBuilder with a semicolon
+                    sb.Append(item.ToString()).Append(";");
+                }
+
+            }
+
+            string st = sb.ToString();
+
+            // Remove the trailing semicolon, if any
+            if (st.Length > 0 && st[st.Length - 1] == ';')
+            {
+                sb.Length--; // Remove the last semicolon
+                st = sb.ToString();
+            }
+
+            return st;
         }
         private void CommitTextBox()
         {

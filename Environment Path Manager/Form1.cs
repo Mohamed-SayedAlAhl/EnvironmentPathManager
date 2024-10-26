@@ -18,7 +18,14 @@ namespace Manager
     public partial class Form1 : Form
     {
         public EnvironmentPathManager env = new EnvironmentPathManager();
-       
+
+        private Button btnNew;
+        private Button btnDelete;
+        private Button btnMoveUp;
+        private Button btnMoveDown;
+
+        private EditListBox listBox1;
+
         public Form1()
         {
 
@@ -26,17 +33,11 @@ namespace Manager
             InitializeComponent();
 
             AskUserToBackUp();
-            PopulateListFromString(env.GetCurrentPath());
+            listBox1.PopulateListFromString(env.GetCurrentPath());
             listBox1.SelectionMode = SelectionMode.MultiExtended;
 
         }
-        private Button btnNew;
-        private Button btnDelete;
-        private Button btnMoveUp;
-        private Button btnMoveDown;
         
-        public EditListBox listBox1;
-
 
 
         private static string superEnvManagerDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), ".SuperEnvManager");
@@ -82,68 +83,6 @@ namespace Manager
         }
        
 
-        private void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-
-        }
-
-
-        private void PopulateListFromString(string input)
-        {
-            string[] items = input.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries)
-                                  .Select(item => item.Trim())
-                                  .Where(item => !string.IsNullOrWhiteSpace(item))
-                                  .ToArray();
-
-            if (items.Length > 0)
-            {
-                // Remove the last empty item if it exists
-                if (listBox1.Items.Count > 0 && string.IsNullOrEmpty(listBox1.Items[listBox1.Items.Count - 1].ToString()))
-                {
-                    listBox1.Items.RemoveAt(listBox1.Items.Count - 1);
-                }
-
-                // Add new items
-                listBox1.Items.AddRange(items);
-
-                
-
-                // Select the first newly added item
-                listBox1.SelectedIndex = listBox1.Items.Count - items.Length - 1;
-                
-                listBox1.Refresh();
-            }
-        }
-
-        private string GetListBoxItemsAsString()
-        {
-            // Initialize a StringBuilder to efficiently build the string
-            StringBuilder sb = new StringBuilder();
-
-            // Iterate through all items in the ListBox
-            foreach (var item in listBox1.Items)
-            {
-                if (!string.IsNullOrEmpty(item.ToString()) && !string.IsNullOrWhiteSpace(item.ToString()))
-                {
-                    // Append each item to the StringBuilder with a semicolon
-                    sb.Append(item.ToString()).Append(";");
-                }
-
-            }
-
-            string st = sb.ToString();
-
-            // Remove the trailing semicolon, if any
-            if (st.Length > 0 && st[st.Length - 1] == ';')
-            {
-                sb.Length--; // Remove the last semicolon
-                st = sb.ToString();
-            }
-
-            return st;
-        }
-     
         private void btnNew_Click(object sender, EventArgs e)
         {
 
@@ -161,7 +100,7 @@ namespace Manager
             {
                 listBox1.ConfirmDelete = false;
                 listBox1.DeleteSelectedItems();
-                listBox1.Height -= 20; // Adjusts height if needed
+               
             }
         }
 
@@ -190,7 +129,7 @@ namespace Manager
 
             if (dialogResult == DialogResult.Yes)
             {
-                env.SavingPath(GetListBoxItemsAsString());
+                env.SavingPath(listBox1.GetListBoxItemsAsString());
                 CustomMessageBox.Show("Saved to System Successfully", "Saved", MessageBoxIcon.Information, true, "OK");
             }
 
@@ -199,9 +138,7 @@ namespace Manager
 
         private void BackupOriginal(bool WithMessage = true)
         {
-            //string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-
-            //saveFileDialog1.InitialDirectory = $@"{desktopPath}";
+            
 
             string ThisPcPath = Environment.GetFolderPath(Environment.SpecialFolder.MyComputer);
             saveFileDialog1.InitialDirectory = $@"{ThisPcPath}";
@@ -279,30 +216,22 @@ namespace Manager
             if (DialogResult == true)
             {
 
-                foreach (string SelectedPath in dialog.SelectedPaths)
-                {
-                    if (!string.IsNullOrWhiteSpace(SelectedPath))
-                    {
+                listBox1.PopulateListFromArray(dialog.SelectedPaths);
 
-                        listBox1.AddNewItem(SelectedPath);
-                    }
-
-
-                }
 
             }
 
 
         }
 
-        private void btnImport_Click(object sender, EventArgs e)
+        private void GetDataForImport_Recovery(bool IsRecovery=false)
         {
 
             string ThisPcPath = Environment.GetFolderPath(Environment.SpecialFolder.MyComputer);
 
             openFileDialog1.InitialDirectory = $@"{ThisPcPath}";
 
-            openFileDialog1.Title = "Import Backup from text File : ";
+            openFileDialog1.Title = IsRecovery ? "Recover using Backup text File : " : "Import Paths from Semicolon seperated text File : ";
             openFileDialog1.DefaultExt = "txt";
 
             openFileDialog1.Filter = "text (*.txt)|*.txt";
@@ -313,12 +242,23 @@ namespace Manager
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
 
-                // Clear ListBox First Before Recovering
-                listBox1.Items.Clear();
-                // Recovering Backup
-                PopulateListFromString(File.ReadAllText(openFileDialog1.FileName));
+                if(IsRecovery)
+                {
+                    // Clear ListBox First Before Recovering
+                    listBox1.Items.Clear();
+                }
+                
+
+                listBox1.PopulateListFromString(File.ReadAllText(openFileDialog1.FileName));
 
             }
+
+        }
+
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+
+            GetDataForImport_Recovery(false);
 
         }
 
@@ -351,25 +291,25 @@ namespace Manager
 
 
             string ThisPcPath = Environment.GetFolderPath(Environment.SpecialFolder.MyComputer);
-            saveFileDialog2.InitialDirectory = $@"{ThisPcPath}";
-
-            saveFileDialog2.Title = "Save File As: ";
-            saveFileDialog2.DefaultExt = "txt";
-
-            saveFileDialog2.Filter = "text (*.txt)|*.txt";
-
-            saveFileDialog2.FilterIndex = 0;
+            saveFileDialog1.InitialDirectory = $@"{ThisPcPath}";
+                        
+            saveFileDialog1.Title = "Save File As: ";
+            saveFileDialog1.DefaultExt = "txt";
+                          
+            saveFileDialog1.Filter = "text (*.txt)|*.txt";
+                          
+            saveFileDialog1.FilterIndex = 0;
 
             string todayDate = DateTime.Now.ToString("yyyy-MM-dd");
 
-            saveFileDialog2.FileName = $" Viewed paths Snapshot - {todayDate}";
+            saveFileDialog1.FileName = $" Viewed paths Snapshot - {todayDate}";
 
 
-            if (saveFileDialog2.ShowDialog() == DialogResult.OK)
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
 
 
-                if (BackUpShowingPath(saveFileDialog2.FileName, GetListBoxItemsAsString()))
+                if (BackUpShowingPath(saveFileDialog1.FileName, listBox1.GetListBoxItemsAsString()))
                     CustomMessageBox.Show($"Export to Viewed Snapshot is Saved Successfully ", "Sucess", MessageBoxIcon.Information, true, "OK");
                 else
                     CustomMessageBox.Show("Exportion to Viewed Snapshot  Failed  ", "Failure", MessageBoxIcon.Error, true, "OK");
@@ -377,18 +317,13 @@ namespace Manager
             }
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        
+
+        private void btn_Recovery_Click(object sender, EventArgs e)
         {
-            var selectedItems = new List<object>();
-            foreach (int index in listBox1.SelectedIndices)
-            {
-                selectedItems.Add(listBox1.Items[index]);
-            }
 
+            GetDataForImport_Recovery(true);
         }
-
-
-
     }
 
    

@@ -44,11 +44,10 @@ namespace Manager
             this.listBox1 = new Manager.EditListBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.btnImport = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.btnBackShowingPath = new System.Windows.Forms.Button();
-            this.saveFileDialog2 = new System.Windows.Forms.SaveFileDialog();
+            this.btn_Recovery = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -94,7 +93,7 @@ namespace Manager
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(502, 263);
+            this.button3.Location = new System.Drawing.Point(502, 273);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(141, 23);
             this.button3.TabIndex = 7;
@@ -104,7 +103,7 @@ namespace Manager
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(674, 356);
+            this.btnSave.Location = new System.Drawing.Point(684, 374);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(117, 32);
             this.btnSave.TabIndex = 8;
@@ -114,7 +113,7 @@ namespace Manager
             // 
             // BtnCancel
             // 
-            this.BtnCancel.Location = new System.Drawing.Point(516, 356);
+            this.BtnCancel.Location = new System.Drawing.Point(526, 374);
             this.BtnCancel.Name = "BtnCancel";
             this.BtnCancel.Size = new System.Drawing.Size(117, 32);
             this.BtnCancel.TabIndex = 9;
@@ -131,7 +130,7 @@ namespace Manager
             this.panel1.Size = new System.Drawing.Size(485, 396);
             this.panel1.TabIndex = 10;
             // 
-            // listBox2
+            // listBox1
             // 
             this.listBox1.AllowDelete = true;
             this.listBox1.CommitOnEnter = true;
@@ -144,10 +143,10 @@ namespace Manager
             this.listBox1.HorizontalScrollbar = true;
             this.listBox1.IntegralHeight = false;
             this.listBox1.Location = new System.Drawing.Point(0, 0);
-            this.listBox1.Name = "listBox2";
+            this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(485, 396);
             this.listBox1.TabIndex = 0;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+
             // 
             // btnSearch
             // 
@@ -175,7 +174,7 @@ namespace Manager
             // 
             // btnBackShowingPath
             // 
-            this.btnBackShowingPath.Location = new System.Drawing.Point(674, 263);
+            this.btnBackShowingPath.Location = new System.Drawing.Point(674, 273);
             this.btnBackShowingPath.Name = "btnBackShowingPath";
             this.btnBackShowingPath.Size = new System.Drawing.Size(139, 23);
             this.btnBackShowingPath.TabIndex = 13;
@@ -183,11 +182,22 @@ namespace Manager
             this.btnBackShowingPath.UseVisualStyleBackColor = true;
             this.btnBackShowingPath.Click += new System.EventHandler(this.btnBackShowingPath_Click);
             // 
+            // btn_Recovery
+            // 
+            this.btn_Recovery.Location = new System.Drawing.Point(585, 198);
+            this.btn_Recovery.Name = "btn_Recovery";
+            this.btn_Recovery.Size = new System.Drawing.Size(139, 23);
+            this.btn_Recovery.TabIndex = 14;
+            this.btn_Recovery.Text = "Recover from Backup";
+            this.btn_Recovery.UseVisualStyleBackColor = true;
+            this.btn_Recovery.Click += new System.EventHandler(this.btn_Recovery_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(833, 436);
+            this.Controls.Add(this.btn_Recovery);
             this.Controls.Add(this.btnBackShowingPath);
             this.Controls.Add(this.btnImport);
             this.Controls.Add(this.btnSearch);
@@ -218,11 +228,10 @@ namespace Manager
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.Button btnImport;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button btnBackShowingPath;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog2;
+        private System.Windows.Forms.Button btn_Recovery;
 
         //private System.Windows.Forms.ListBox listBox1;
     }
