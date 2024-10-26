@@ -28,6 +28,7 @@ This application, developed using C# and .NET Framework 4.8, is designed to enha
   - **Bulk Addition:** Add multiple paths at once with single click with browse.
   - **Multi Selection:** The app allow Multi selection inside list box with allowing you to delete multiple paths or moving multiple paths around.
   - **Backup Features:** Create backups of the Path variable.
+  - **Recovery From Backup Feature:** Allowing you to recover to certain version when something goes wrong.
   - **Export and Import:** Export snapshots and import paths from text files.
 
 ## Installation
